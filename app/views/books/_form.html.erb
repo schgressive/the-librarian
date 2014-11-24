@@ -1,4 +1,4 @@
-<%= form_for(@book) do |f| %>
+<%= form_for @book, :html => {:multipart => true} do |f| %>
   <% if @book.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@book.errors.count, "error") %> prohibited this book from being saved:</h2>
@@ -10,18 +10,27 @@
       </ul>
     </div>
   <% end %>
+  <div class="field">
+    <%= f.label :cover %><br>
+    <% if @book.cover? %>
+    <%= image_tag(@book.cover_url, class: "responsive_image") %>
+    <% else image_tag("bookthumbnail.jpeg", class: "responsive_image") %>
+    <% end %>
+    <%= f.file_field :cover %><br>
+    <%= f.hidden_field :cover_cache %><br>
 
+  </div>
   <div class="field">
     <%= f.label :title %><br>
     <%= f.text_field :title %>
   </div>
   <div class="field">
-    <%= f.label :author %><br>
-    <%= f.text_field :author %>
+    <%= f.label :authors_names %><br>
+    <%= f.text_field :authors_names %>
   </div>
   <div class="field">
-    <%= f.label :editorial %><br>
-    <%= f.text_field :editorial %>
+    <%= f.label :editorial_name %><br>
+    <%= f.text_field :editorial_name %>
   </div>
   <div class="field">
     <%= f.label :original_title %><br>

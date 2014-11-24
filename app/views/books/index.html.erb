@@ -6,18 +6,20 @@
     <div class="alert alert-warning">No hay libros que mostrar</div>
   <% else %>
     <div class="responsive-fake-table expansible-fake-table">
-      <header class="row">
-        <div class="col col-xs-5 col-sm-4 col-md-3"><%=t('activerecord.attributes.book.title')%></div>
-        <div class="col col-xs-5 col-sm-3 col-md-3"><%=t('activerecord.attributes.book.author')%></div>
-        <div class="col hidden-xs col-sm-4 col-md-3"><%=t('activerecord.attributes.book.editorial')%></div>
+      <header class="row text-center">
+        <div class="col col col-xs-2 col-sm-1 col-md-1"><%=t('activerecord.attributes.book.cover')%></div>
+        <div class="col col-xs-4 col-sm-4 col-md-3"><%=t('activerecord.attributes.book.title')%></div>
+        <div class="col col-xs-4 col-sm-3 col-md-3"><%=t('activerecord.attributes.book.authors_names')%></div>
+        <div class="col hidden-xs col-sm-4 col-md-2"><%=t('activerecord.attributes.book.editorial_name')%></div>
         <div class="col hidden-xs hidden-sm col-md-2"><%=t('activerecord.attributes.book.edition')%></div>
         <div class="col col-xs-2 col-sm-1 col-md-1"><span class="hidden-sm hidden-xs">Opciones</span>&nbsp;</div>
       </header>
       <% @books.each do |book|%>
         <section class="row">
-          <div class="col col-xs-5 col-sm-4 col-md-3 toggle"><%=book.title %></div>
-          <div class="col col-xs-5 col-sm-3 col-md-3 toggle"><%=book.author%></div>
-          <div class="col hidden-xs col-sm-4 col-md-3 toggle"><%=book.editorial%></div>
+          <div class="col col-xs-2 col-sm-1 col-md-1 toggle"><%=image_tag(book.cover_url, class: "responsive_image") %></div>
+          <div class="col col-xs-4 col-sm-4 col-md-3 toggle"><%=book.title %></div>
+          <div class="col col-xs-4 col-sm-3 col-md-3 toggle"><%=book.authors_names%></div>
+          <div class="col hidden-xs col-sm-4 col-md-2 toggle"><%=book.editorial_name%></div>
           <div class="col hidden-xs hidden-sm col-md-2 toggle"><%=book.edition%></div>
           <div class="col col-xs-2 col-sm-1 col-md-1">
             <%= link_to content_tag('i','', class: 'fa fa-eye'), book, class: 'tooltipable', title: 'Ver' %>
@@ -28,8 +30,8 @@
           <div class="col col-xs-12 panel-collapse collapse">
             <dl class="dl-horizontal">
               
-              <dt class="visible-xs"><%=t('activerecord.attributes.book.editorial') %></dt>
-              <dd class="visible-xs"><%=book.editorial || '-' %></dd>
+              <dt class="visible-xs"><%=t('activerecord.attributes.book.editorial_name') %></dt>
+              <dd class="visible-xs"><%=book.editorial_name || '-' %></dd>
               
               <dt><%=t('activerecord.attributes.book.original_title') %></dt>
               <dd><%=book.original_title || '-' %></dd>

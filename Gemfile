@@ -42,6 +42,8 @@ gem 'twitter-bootstrap-rails'
 # devise: authentication
 gem 'devise'
 
+# uploader de imagenes
+gem 'carrierwave'
 
 group :development do
   # mejora los mensajes de error en el browser

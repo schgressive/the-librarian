@@ -21,5 +21,7 @@ module TheLibrarian
     # config.i18n.default_locale = :de
     config.i18n.default_locale = :es
     config.i18n.locale = :es
+    config.autoload_paths += %W(#{config.root}/app/uploaders)
+    config.quiet_assets = false
   end
 end

@@ -17,4 +17,5 @@
  * =require bootstrap_and_overrides
  * =require theme_styles
  * =require_tree ./controller_styles
+ * =require scaffolds
  */

@@ -26,6 +26,11 @@ class BooksController < ApplicationController
   end
 
   def update
+    authors = params[:authors_names]
+    authors = authors.split(' - ')
+    authors.each do |author_name|
+      @book.authors.where('authors.name = ?', author_name).first.update(:name => author_name )
+    end
     @book.update(book_params)
     respond_with(@book)
   end
@@ -41,6 +46,6 @@ class BooksController < ApplicationController
     end
 
     def book_params
-      params.require(:book).permit(:title, :author, :editorial, :original_title, :translation, :edition, :edition_date, :edition_place, :publication_year, :isbn)
+      params.require(:book).permit(:title, :authors_names, :editorial_name, :original_title, :translation, :edition, :edition_date, :edition_place, :publication_year, :isbn, :cover, :cover_cache)
     end
 end
